@@ -183,7 +183,7 @@ function loadPuzzle(){
 
         answers.push(word.toLowerCase());
 
-        let html = "";
+        let html = `<span class="wordGroup">`;
 
         for(let i = 0; i < word.length; i++){
 
@@ -202,21 +202,26 @@ function loadPuzzle(){
 
         }
 
+        html += `</span>`;
+
         return html;
 
     });
 
     puzzles[currentPuzzle].answers = answers;
-document.getElementById("currentDifficulty").textContent =
-    "Difficulty: " + puzzles[currentPuzzle].difficulty.toUpperCase();
 
-document.getElementById("currentDifficulty").className =
-    puzzles[currentPuzzle].difficulty.toLowerCase();
+    document.getElementById("currentDifficulty").textContent =
+        "Difficulty: " + puzzles[currentPuzzle].difficulty.toUpperCase();
+
+    document.getElementById("currentDifficulty").className =
+        puzzles[currentPuzzle].difficulty.toLowerCase();
+
     document.querySelector(".question").innerHTML = sentence;
 
     setupLetterBoxes();
 
     updateHintTracker();
+
     updateDifficulty();
 
 }

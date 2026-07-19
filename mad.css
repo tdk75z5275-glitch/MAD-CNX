@@ -899,3 +899,16 @@ button:hover{
 #currentDifficulty.expert{
     background:#7b1fa2;
 }
+.wordGroup{
+
+    display:inline-flex;
+
+    flex-wrap:nowrap;
+
+    white-space:nowrap;
+
+    gap:2px;
+
+    vertical-align:middle;
+
+}
