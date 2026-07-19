@@ -207,7 +207,11 @@ function loadPuzzle(){
     });
 
     puzzles[currentPuzzle].answers = answers;
+document.getElementById("currentDifficulty").textContent =
+    "Difficulty: " + puzzles[currentPuzzle].difficulty.toUpperCase();
 
+document.getElementById("currentDifficulty").className =
+    puzzles[currentPuzzle].difficulty.toLowerCase();
     document.querySelector(".question").innerHTML = sentence;
 
     setupLetterBoxes();

@@ -873,3 +873,29 @@ button:hover{
     background:rgb(133,58,220);
 
 }
+#currentDifficulty{
+    display:inline-block;
+    margin-bottom:12px;
+    padding:6px 14px;
+    border-radius:20px;
+    font-weight:bold;
+    color:white;
+    font-size:14px;
+    text-transform:uppercase;
+}
+
+#currentDifficulty.easy{
+    background:#2e7d32;
+}
+
+#currentDifficulty.medium{
+    background:#1565c0;
+}
+
+#currentDifficulty.hard{
+    background:#ef6c00;
+}
+
+#currentDifficulty.expert{
+    background:#7b1fa2;
+}
