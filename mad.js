@@ -1247,8 +1247,7 @@ function addPuzzleToHistory(puzzle, guesses){
 
     currentGuesses = 0;
 
-historyToggle.innerHTML =
-    `📚 Solved Puzzles (${history.length}) ▼`;
+
 }
 async function isRealWord(word){
 
@@ -1700,5 +1699,9 @@ historyToggle.addEventListener("click", function(){
             `📚 Solved Puzzles (${history.length}) ▲`;
 
     }
+    
+
+historyToggle.innerHTML =
+    `📚 Solved Puzzles (${history.length}) ▼`;
 
 });
