@@ -19,7 +19,12 @@
     "tailoring",
     "botany",
     "maritime",
-    "coding"
+    "coding",
+    "art",
+    "astronomy",
+    "geology",
+    "baking",
+    "mystery"
   ],
   "sentences": [
     "The {cello} played a soft {flute} while the {harp} waited for the {drum} to begin.",
@@ -41,6 +46,11 @@
     "A thin {needle} stitches the {fabric} while the {seam} binds the {thread} tightly.",
     "The {bulb} sprouted under the {soil} despite the {frost} hindering its {growth}.",
     "The {tide} pulled the {anchor} from the {hull} near the {pier}.",
-    "A complex {algorithm} processes the {binary} inside the {logic} of the {script}."
+    "A complex {algorithm} processes the {binary} inside the {logic} of the {script}.",
+    "The {brush} applied the {paint} across the {canvas} to finish the {masterpiece}.",
+    "During the {eclipse} the {shadow} obscured the {corona} as the {alignment} shifted.",
+    "The {crust} sits below the {mantle} which supports the {plate} moving above the {core}.",
+    "Use the {flour} and the {yeast} plus the {water} to prepare the {dough}.",
+    "The {riddle} requires a {clue} to find the {answer} hidden in the {cipher}."
   ]
 }

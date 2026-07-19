@@ -106,8 +106,17 @@ async function loadPuzzlesFromAI(){
     try {
 
         const response = await fetch(
-    "https://mad-cnx-server.onrender.com/generate-puzzles?count=5"
-);
+            "https://mad-cnx-server.onrender.com/generate-puzzles?count=5&new=true",
+            {
+                cache:"no-store"
+            }
+        );
+
+
+        if(!response.ok){
+            throw new Error("AI server error: " + response.status);
+        }
+
         let data = await response.json();
 
         if(Array.isArray(data) && data.length > 0){
