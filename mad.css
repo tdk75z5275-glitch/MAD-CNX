@@ -791,3 +791,85 @@ button:hover{
 
 .expertDifficulty{ border-left:8px solid rgb(186,140,255); }
 .expertDifficulty .difficultyLabel{ background:rgb(133,58,220); }
+/* =========================
+   Active Letter Box Glow
+========================= */
+
+.letterBox.active{
+
+    border-color: rgb(186,140,255);
+
+    box-shadow:
+        0 0 6px rgb(186,140,255),
+        0 0 12px rgba(186,140,255,.8);
+
+    transition:
+        box-shadow .15s ease,
+        border-color .15s ease;
+
+}
+/* =========================
+   Current Difficulty
+========================= */
+
+#difficultyBar{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:10px;
+
+    background:#1f1f1f;
+
+    border-bottom:4px solid rgb(85,0,170);
+
+}
+
+#difficultyLabel{
+
+    padding:6px 18px;
+
+    border-radius:8px;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    color:white;
+
+}
+
+/* Easy */
+
+#difficultyLabel.easy{
+
+    background:#16a34a;
+
+}
+
+/* Medium */
+
+#difficultyLabel.medium{
+
+    background:#2563eb;
+
+}
+
+/* Hard */
+
+#difficultyLabel.hard{
+
+    background:#ea580c;
+
+}
+
+/* Expert */
+
+#difficultyLabel.expert{
+
+    background:rgb(133,58,220);
+
+}

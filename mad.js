@@ -213,6 +213,7 @@ function loadPuzzle(){
     setupLetterBoxes();
 
     updateHintTracker();
+    updateDifficulty();
 
 }
 
@@ -262,7 +263,21 @@ function focusPrevAvailable(boxes, fromIndex){
     }
 
 }
+function updateActiveBox(){
 
+    document.querySelectorAll(".letterBox").forEach(function(box){
+
+        box.classList.remove("active");
+
+    });
+
+    if(document.activeElement.classList.contains("letterBox")){
+
+        document.activeElement.classList.add("active");
+
+    }
+
+}
 
 function setupLetterBoxes(){
 
@@ -361,11 +376,13 @@ function setupLetterBoxes(){
 
 
 
-        box.addEventListener("focus",function(){
+box.addEventListener("focus",function(){
 
-            lastFocusedBox = box;
+    lastFocusedBox = box;
 
-        });
+    updateActiveBox();
+
+});
 
 
 
@@ -379,11 +396,13 @@ function setupLetterBoxes(){
 
 
 
-    if(firstAvailable){
+if(firstAvailable){
 
-        firstAvailable.focus();
+    firstAvailable.focus();
 
-    }
+    updateActiveBox();
+
+}
 
 
 }
@@ -1631,5 +1650,23 @@ function useConnectionHint(){
     }
 
     saveGameState();
+
+}
+function updateDifficulty(){
+
+    const label =
+    document.getElementById("difficultyLabel");
+
+    if(!label) return;
+
+    label.className = "";
+
+    const difficulty =
+    puzzles[currentPuzzle].difficulty.toLowerCase();
+
+    label.classList.add(difficulty);
+
+    label.textContent =
+        difficulty.toUpperCase();
 
 }
