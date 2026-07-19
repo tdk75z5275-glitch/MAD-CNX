@@ -223,6 +223,10 @@ function loadPuzzle(){
     updateHintTracker();
 
     updateDifficulty();
+    updateHistoryToggle();
+    
+historyToggle.innerHTML =
+    `📚 Solved Puzzles (${history.length}) ▼`;
 
 }
 
