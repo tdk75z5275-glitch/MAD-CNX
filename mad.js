@@ -1247,7 +1247,8 @@ function addPuzzleToHistory(puzzle, guesses){
 
     currentGuesses = 0;
 
-
+historyToggle.innerHTML =
+    `📚 Solved Puzzles (${history.length}) ▼`;
 }
 async function isRealWord(word){
 
@@ -1679,3 +1680,25 @@ function updateDifficulty(){
         difficulty.toUpperCase();
 
 }
+const historyToggle = document.getElementById("historyToggle");
+const historyList = document.getElementById("historyList");
+
+historyToggle.addEventListener("click", function(){
+
+    const open = historyList.style.display === "flex";
+
+    if(open){
+
+        historyList.style.display = "none";
+        historyToggle.innerHTML =
+            `📚 Solved Puzzles (${history.length}) ▼`;
+
+    }else{
+
+        historyList.style.display = "flex";
+        historyToggle.innerHTML =
+            `📚 Solved Puzzles (${history.length}) ▲`;
+
+    }
+
+});

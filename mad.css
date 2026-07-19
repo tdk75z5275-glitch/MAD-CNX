@@ -912,3 +912,46 @@ button:hover{
     vertical-align:middle;
 
 }
+
+
+#historyToggle{
+
+    width:100%;
+
+    padding:16px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    background:#242424;
+
+    color:rgb(186,140,255);
+
+    border:none;
+
+    border-top:4px solid rgb(85,0,170);
+
+    cursor:pointer;
+
+    transition:background .2s ease;
+
+}
+
+#historyToggle:hover{
+
+    background:#303030;
+
+}
+
+#historyList{
+
+    display:none;
+
+    gap:10px;
+
+    overflow-x:auto;
+
+    padding:14px;
+
+}
