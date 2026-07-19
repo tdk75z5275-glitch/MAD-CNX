@@ -1,0 +1,768 @@
+/* =========================
+   Whole Page
+========================= */
+
+body{
+
+    margin:0;
+
+    background:black;
+
+    display:flex;
+
+    justify-content:center;
+
+    padding-top:16px;
+
+    font-family:Georgia, serif;
+
+}
+
+
+/* =========================
+   Main Game
+========================= */
+
+#gameContainer{
+
+    width:920px;
+
+    border:6px solid rgb(85,0,170);
+
+    background:#1a1a1a;
+
+}
+
+
+/* =========================
+   Header
+========================= */
+
+#header{
+
+    background:#2b2b2b;
+
+    height:56px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-bottom:4px solid rgb(85,0,170);
+
+}
+
+
+#header h1{
+
+    color:rgb(186,140,255);
+
+    font-size:34px;
+
+    margin:0;
+
+}
+
+
+/* =========================
+   Instructions Box
+========================= */
+
+#instructionsBox{
+
+    background:#242424;
+
+    color:#ccc;
+
+    padding:10px 20px;
+
+    font-size:13px;
+
+    text-align:center;
+
+    border-bottom:3px solid rgb(85,0,170);
+
+    line-height:1.5;
+
+}
+
+#instructionsBox strong{
+
+    color:rgb(186,140,255);
+
+}
+
+
+/* =========================
+   Question Area
+========================= */
+
+#questionBox{
+
+    background:#2b2b2b;
+
+    min-height:110px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:14px 20px;
+
+    box-sizing:border-box;
+
+}
+
+
+.question{
+
+    font-size:19px;
+
+    color:#f0f0f0;
+
+    text-align:center;
+
+    line-height:1.7;
+
+}
+
+
+/* =========================
+   Puzzle Controls
+========================= */
+
+#puzzleControls{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+#puzzleControls button{
+
+    font-size:13px;
+
+    padding:5px 12px;
+
+}
+
+#hintTracker{
+
+    font-size:12px;
+
+    color:#999;
+
+}
+
+
+/* =========================
+   Tile Flip Animation
+========================= */
+
+.flip{
+
+    animation: flipTile 0.6s ease forwards;
+
+}
+
+@keyframes flipTile{
+
+    0%{
+        transform: rotateX(0deg);
+    }
+
+    50%{
+        transform: rotateX(90deg);
+    }
+
+    100%{
+        transform: rotateX(0deg);
+    }
+
+}
+
+
+/* =========================
+   Shake Animation
+========================= */
+
+.shake{
+
+    animation: shakeTile 0.4s;
+
+}
+
+@keyframes shakeTile{
+
+    0%{ transform: translateX(0); }
+
+    20%{ transform: translateX(-8px); }
+
+    40%{ transform: translateX(8px); }
+
+    60%{ transform: translateX(-6px); }
+
+    80%{ transform: translateX(6px); }
+
+    100%{ transform: translateX(0); }
+
+}
+
+
+/* =========================
+   Word Answer Colors
+========================= */
+
+.letterBox.correct{
+
+    background:lime;
+
+    border-color:lime;
+
+    color:black;
+
+}
+
+.letterBox.wrong{
+
+    background:#444;
+
+    border-color:#444;
+
+    color:white;
+
+}
+
+.letterBox.present{
+
+    background:gold;
+
+    border-color:gold;
+
+    color:black;
+
+}
+
+
+/* =========================
+   Buttons
+========================= */
+
+button{
+
+    padding:8px 18px;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    background:#3a3a3a;
+
+    color:white;
+
+    border:2px solid rgb(85,0,170);
+
+    border-radius:5px;
+
+}
+
+button:hover{
+
+    background:rgb(85,0,170);
+
+}
+
+
+/* =========================
+   Status Message
+========================= */
+
+#statusMessage{
+
+    min-height:18px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    color:gold;
+
+}
+
+
+
+/* =========================
+   Connection Box
+========================= */
+
+#connectionBox{
+
+    display:none;
+
+    min-height:70px;
+
+    background:#242424;
+
+    border-top:4px solid rgb(85,0,170);
+
+    padding:14px 20px;
+
+    text-align:center;
+
+    color:#f0f0f0;
+
+    width:100%;
+
+    box-sizing:border-box;
+
+}
+
+
+#connectionBox h3{
+
+    margin:0 0 8px 0;
+
+    font-size:17px;
+
+    color:rgb(186,140,255);
+
+}
+
+
+
+#connectionGuess{
+
+    width:200px;
+
+    height:30px;
+
+    font-size:16px;
+
+    text-align:center;
+
+    border:3px solid rgb(85,0,170);
+
+    background:#1a1a1a;
+
+    color:white;
+
+}
+
+
+#connectionHintText{
+
+    margin-top:8px;
+
+    font-size:16px;
+
+    letter-spacing:4px;
+
+    font-weight:bold;
+
+    color:gold;
+
+    min-height:20px;
+
+}
+
+
+
+/* =========================
+   Connection Animation
+========================= */
+
+.connectionWrong{
+
+    animation:connectionRed 0.4s;
+
+}
+
+.connectionCorrect{
+
+    animation:connectionGreen 0.4s forwards;
+
+}
+
+@keyframes connectionRed{
+
+    0%{ background:#1a1a1a; border-color:red; }
+    50%{ background:red; border-color:red; }
+    100%{ background:#1a1a1a; border-color:rgb(85,0,170); }
+
+}
+
+
+
+@keyframes connectionGreen{
+
+    0%{ background:#1a1a1a; border-color:lime; }
+    50%{ background:lime; border-color:lime; }
+    100%{ background:lime; border-color:lime; }
+
+}
+
+
+/* =========================
+   Game Area Layout
+========================= */
+
+#gameArea{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:0;
+
+}
+
+
+#questionBox{
+
+    width:100%;
+
+    border-top:4px solid rgb(85,0,170);
+
+}
+
+
+/* =========================
+   Letter Boxes
+========================= */
+
+.letterBox{
+
+    width:28px;
+
+    height:28px;
+
+    margin:1px;
+
+    border:3px solid rgb(85,0,170);
+
+    border-radius:5px;
+
+    text-align:center;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    background:#3a3a3a;
+
+    color:white;
+
+    outline:none;
+
+}
+
+.letterBox:disabled{
+
+    opacity:1;
+
+}
+
+
+/* =========================
+   Keyboard
+========================= */
+
+#keyboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:14px;
+
+    background:black;
+
+    border-top:4px solid rgb(85,0,170);
+
+}
+
+.keyboardRow{
+
+    display:flex;
+
+    gap:5px;
+
+}
+
+.key{
+
+    min-width:68px;
+
+    height:48px;
+
+    background:#666;
+
+    color:white;
+
+    border:none;
+
+    border-radius:4px;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.key:hover{
+
+    background:#777;
+
+}
+
+.key:active{
+
+    transform:scale(.92);
+
+}
+
+.keyWide{
+
+    min-width:96px;
+
+    font-size:13px;
+
+}
+
+.key.correct{
+
+    background:lime;
+
+    color:black;
+
+}
+
+.key.present{
+
+    background:gold;
+
+    color:black;
+
+}
+
+.key.wrong{
+
+    background:#333;
+
+    color:white;
+
+}
+
+
+/* =========================
+   Message Box (bordered strip, not solid white)
+========================= */
+
+#messageBox{
+
+    background:#242424;
+
+    color:#ddd;
+
+    border-top:4px solid rgb(85,0,170);
+
+    border-bottom:4px solid rgb(85,0,170);
+
+    padding:8px 20px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   Stats Bar
+========================= */
+
+#statsBox{
+
+    background:#1a1a1a;
+
+    border:3px solid rgb(85,0,170);
+
+    border-radius:10px;
+
+    padding:12px 16px;
+
+    margin:14px;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    font-size:13px;
+
+}
+
+#statsBox .statValue{
+
+    color:gold;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   History (horizontal strip)
+========================= */
+
+#historyBox{
+
+    background:#242424;
+
+    color:#f0f0f0;
+
+    padding:14px 16px;
+
+    border-top:4px solid rgb(85,0,170);
+
+}
+
+#historyBox h3{
+
+    margin:0 0 8px 0;
+
+    font-size:16px;
+
+    color:rgb(186,140,255);
+
+}
+
+#historyList{
+
+    display:flex;
+
+    gap:10px;
+
+    overflow-x:auto;
+
+    padding-bottom:6px;
+
+}
+
+.historyEntry{
+
+    background:#2f2f2f;
+
+    border:2px solid rgb(85,0,170);
+
+    border-radius:6px;
+
+    padding:10px 12px;
+
+    flex:0 0 220px;
+
+    box-sizing:border-box;
+
+}
+
+.historyEntry .historySentence{
+
+    font-size:13px;
+
+    line-height:1.4;
+
+    color:#eee;
+
+}
+
+.historyEntry .historySentence .filledWord{
+
+    color:rgb(186,140,255);
+
+    font-weight:bold;
+
+    text-transform:uppercase;
+
+}
+
+.historyEntry .guessCount{
+
+    margin-top:6px;
+
+    font-size:12px;
+
+    color:gold;
+
+}
+
+.historyEntry .historyConnection{
+
+    margin-top:4px;
+
+    font-size:11px;
+
+    font-style:italic;
+
+    color:#aaa;
+
+}
+
+.difficultyLabel{
+
+    font-weight:bold;
+
+    padding:3px 8px;
+
+    color:white;
+
+    border-radius:5px;
+
+    display:inline-block;
+
+    margin-bottom:6px;
+
+    font-size:11px;
+
+}
+
+.easyDifficulty{ border-left:8px solid green; }
+.easyDifficulty .difficultyLabel{ background:green; }
+
+.mediumDifficulty{ border-left:8px solid #3b82f6; }
+.mediumDifficulty .difficultyLabel{ background:#3b82f6; }
+
+.hardDifficulty{ border-left:8px solid orange; }
+.hardDifficulty .difficultyLabel{ background:orange; }
+
+.expertDifficulty{ border-left:8px solid rgb(186,140,255); }
+.expertDifficulty .difficultyLabel{ background:rgb(133,58,220); }

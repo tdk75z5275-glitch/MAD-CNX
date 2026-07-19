@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mad-Cnx</title>
+
+    <link rel="stylesheet" href="mad.css">
+
+</head>
+
+
+<body>
+
+<div id="gameContainer">
+
+
+    <div id="header">
+
+        <h1>MAD-CNX</h1>
+
+    </div>
+
+
+    <div id="instructionsBox">
+
+        <strong>How to play:</strong> Fill in the hidden words inside the sentence ( 🟩 correct spot, 🟨 wrong spot, ⬛ not in the word), then guess the one-word connection between them all.
+
+    </div>
+
+
+  <div id="gameArea">
+
+
+    <div id="questionBox">
+
+        <div class="question"></div>
+
+        <button id="submitBtn">
+            Submit Words
+        </button>
+
+        <div id="statusMessage"></div>
+
+        <div id="puzzleControls">
+
+            <button id="hintBtn">
+                💡 Hint
+            </button>
+
+            <button id="resetBtn">
+                🔄 Reset Puzzle
+            </button>
+
+        </div>
+
+        <div id="hintTracker">
+
+            💡 Hints: 0/4 this puzzle • 0 all-time
+
+        </div>
+
+    </div>
+
+
+    <div id="connectionBox">
+
+        <h3>Guess the Connection</h3>
+
+        <input 
+            id="connectionGuess"
+            type="text"
+            placeholder="Enter connection">
+
+        <button id="connectionBtn">
+            Submit Connection
+        </button>
+
+        <button id="connHintBtn">
+            💡 Hint
+        </button>
+
+        <div id="connectionHintText"></div>
+
+    </div>
+
+
+</div>
+
+<div id="messageBox">
+
+    Welcome to Mad-Conex!
+
+</div>
+<div id="keyboard"></div>
+<div id="statsBox">
+
+🔥 Current Streak: 0
+
+</div>
+
+<div id="historyBox">
+
+    <h3>Solved Puzzles</h3>
+
+    <div id="historyList"></div>
+
+</div>
+
+
+</div>
+
+
+<script src="mad.js"></script>
+
+
+</body>
+
+</html>
