@@ -146,8 +146,9 @@ async function loadMorePuzzles(){
 
     try{
 
-        let response = await fetch("/generate-puzzles?count=5");
-
+        let response = await fetch(
+            "https://mad-cnx-server.onrender.com/generate-puzzles?count=5"
+        );
         let newPuzzles = await response.json();
 
 
