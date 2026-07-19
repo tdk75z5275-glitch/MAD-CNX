@@ -10,7 +10,10 @@ const PORT = 3000;
 
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: "https://mad-conex.vercel.app"
+}));
+
 app.use(express.static(path.join(__dirname)));
 
 
