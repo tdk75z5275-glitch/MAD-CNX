@@ -129,6 +129,7 @@ Hidden words must:
 - Have no punctuation
 - Be common enough for players to know
 - Fit naturally in the sentence
+- Be singular (not plural)
 
 
 NEVER USE:
@@ -144,6 +145,7 @@ NEVER USE:
 - Famous characters
 - Planets
 - Proper nouns
+-Profanity
 
 
 Bad examples:
@@ -313,30 +315,82 @@ DO NOT:
 
 
 
-DIFFICULTY:
+Generate 5 Mad-CNX puzzles.
 
-Randomly assign:
+Each puzzle MUST contain:
+- exactly four hidden words
+- exactly one-word connection
+- one complete sentence
+- natural English
 
+Difficulty Guide
 
-easy 20%
+EASY
+- Common everyday words.
+- Obvious category.
+- Most players solve in under 3 minutes.
 
-Very obvious connection
+MEDIUM
+- Mostly common words.
+- One uncommon word allowed.
+- Requires some deduction.
+- The category should not be obvious immediately.
 
+HARD
+- At least two uncommon or technical words.
+- Multiple categories should seem plausible.
+- The sentence must not reveal the category.
+- Solvable only after finding most of the words.
 
-medium 40%
+EXPERT
+- Specialized vocabulary.
+- The four words belong to a very narrow topic.
+- The connection should require expert knowledge.
+- Avoid obvious clue words.
 
-Requires thinking
+After generating each puzzle, evaluate whether it truly matches the requested difficulty.
+If it is too easy or too hard, rewrite it until it fits.
+Never mislabel the difficulty.
 
+Return ONLY valid JSON.
+------------------------------------
 
-hard 30%
+VERY IMPORTANT
 
-Unexpected but fair
+Never accidentally reveal the connection.
 
+For example, if the connection is "knitting", the sentence must NOT contain words like:
 
-expert 10%
+knit
+sew
+fabric
+crochet
 
-Very clever but solvable
+unless they are one of the four hidden words.
 
+Likewise:
+
+Connection = astronomy
+Do NOT use "planet", "space", or "galaxy" outside the hidden words.
+
+Connection = cybersecurity
+Do NOT use "computer", "hack", or "internet" outside the hidden words.
+
+------------------------------------
+
+SELF-CHECK
+
+Before returning each puzzle, ask yourself:
+
+1. Does it really match the requested difficulty?
+2. Would a human agree with this rating?
+3. Is the category accidentally obvious?
+4. Are all four words necessary?
+5. Could this puzzle be made better?
+
+If not, rewrite it.
+
+Return ONLY the final JSON.
 
 
 ANTI-REPETITION — CRITICAL:
