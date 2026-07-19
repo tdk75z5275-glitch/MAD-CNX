@@ -103,48 +103,76 @@ window.onload = async function () {
 
 async function loadPuzzlesFromAI(){
 
-    try {
+    let attempts = 0;
 
-        const response = await fetch(
-            "https://mad-cnx-server.onrender.com/generate-puzzles?count=5&new=true",
-            {
-                cache:"no-store"
+    while(attempts < 3){
+
+        try{
+
+            const response = await fetch(
+                "https://mad-cnx-server.onrender.com/generate-puzzles?count=5&new=true",
+                {
+                    cache:"no-store"
+                }
+            );
+
+
+            if(!response.ok){
+
+                throw new Error(
+                    "AI server error: " + response.status
+                );
+
             }
-        );
 
 
-        if(!response.ok){
-            throw new Error("AI server error: " + response.status);
-        }
+            let data = await response.json();
 
-        let data = await response.json();
 
-        if(Array.isArray(data) && data.length > 0){
+            if(Array.isArray(data) && data.length > 0){
 
-            puzzles = data;
+                puzzles = data;
 
-        } else {
+                console.log(
+                    "AI puzzles loaded:",
+                    puzzles
+                );
 
-            throw new Error("Invalid puzzle data");
+                return;
 
-        }
+            } 
+            else {
 
-    } catch (error) {
+                throw new Error(
+                    "Invalid puzzle data"
+                );
 
-        console.error("Falling back to default puzzles:", error);
-
-        puzzles = [
-            {
-                sentence: "I can {hear} you with my {ear}.",
-                connection: "hearing"
-            },
-            {
-                sentence: "The {cat} chased the {mouse}.",
-                connection: "animals"
             }
-        ];
+
+
+        } catch(error){
+
+            attempts++;
+
+            console.log(
+                "AI attempt failed:",
+                attempts,
+                error
+            );
+
+
+            await new Promise(resolve =>
+                setTimeout(resolve,5000)
+            );
+
+        }
 
     }
+
+
+    console.log(
+        "Using fallback puzzles"
+    );
 
 }
 async function loadMorePuzzles(){
