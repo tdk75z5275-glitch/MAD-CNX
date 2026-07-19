@@ -1,6 +1,12 @@
 /* =========================
-   Whole Page
+   Reset / Base
 ========================= */
+
+*{
+
+    box-sizing:border-box;
+
+}
 
 body{
 
@@ -12,7 +18,7 @@ body{
 
     justify-content:center;
 
-    padding-top:16px;
+    padding:16px 8px;
 
     font-family:Georgia, serif;
 
@@ -25,11 +31,15 @@ body{
 
 #gameContainer{
 
-    width:920px;
+    width:100%;
+
+    max-width:920px;
 
     border:6px solid rgb(85,0,170);
 
     background:#1a1a1a;
+
+    overflow:hidden;
 
 }
 
@@ -42,7 +52,7 @@ body{
 
     background:#2b2b2b;
 
-    height:56px;
+    min-height:56px;
 
     display:flex;
 
@@ -52,6 +62,8 @@ body{
 
     border-bottom:4px solid rgb(85,0,170);
 
+    padding:8px;
+
 }
 
 
@@ -59,9 +71,11 @@ body{
 
     color:rgb(186,140,255);
 
-    font-size:34px;
+    font-size:clamp(22px, 6vw, 34px);
 
     margin:0;
+
+    text-align:center;
 
 }
 
@@ -76,9 +90,9 @@ body{
 
     color:#ccc;
 
-    padding:10px 20px;
+    padding:10px 16px;
 
-    font-size:13px;
+    font-size:clamp(11px, 3vw, 13px);
 
     text-align:center;
 
@@ -91,6 +105,21 @@ body{
 #instructionsBox strong{
 
     color:rgb(186,140,255);
+
+}
+
+
+/* =========================
+   Game Area Layout
+========================= */
+
+#gameArea{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:0;
 
 }
 
@@ -115,22 +144,26 @@ body{
 
     gap:8px;
 
-    padding:14px 20px;
+    padding:14px 10px;
 
-    box-sizing:border-box;
+    width:100%;
+
+    border-top:4px solid rgb(85,0,170);
 
 }
 
 
 .question{
 
-    font-size:19px;
+    font-size:clamp(14px, 4vw, 19px);
 
     color:#f0f0f0;
 
     text-align:center;
 
-    line-height:1.7;
+    line-height:1.8;
+
+    max-width:100%;
 
 }
 
@@ -145,11 +178,15 @@ body{
 
     gap:10px;
 
+    flex-wrap:wrap;
+
+    justify-content:center;
+
 }
 
 #puzzleControls button{
 
-    font-size:13px;
+    font-size:clamp(11px, 3vw, 13px);
 
     padding:5px 12px;
 
@@ -157,9 +194,11 @@ body{
 
 #hintTracker{
 
-    font-size:12px;
+    font-size:clamp(10px, 2.8vw, 12px);
 
     color:#999;
+
+    text-align:center;
 
 }
 
@@ -176,17 +215,9 @@ body{
 
 @keyframes flipTile{
 
-    0%{
-        transform: rotateX(0deg);
-    }
-
-    50%{
-        transform: rotateX(90deg);
-    }
-
-    100%{
-        transform: rotateX(0deg);
-    }
+    0%{ transform: rotateX(0deg); }
+    50%{ transform: rotateX(90deg); }
+    100%{ transform: rotateX(0deg); }
 
 }
 
@@ -204,15 +235,10 @@ body{
 @keyframes shakeTile{
 
     0%{ transform: translateX(0); }
-
     20%{ transform: translateX(-8px); }
-
     40%{ transform: translateX(8px); }
-
     60%{ transform: translateX(-6px); }
-
     80%{ transform: translateX(6px); }
-
     100%{ transform: translateX(0); }
 
 }
@@ -261,7 +287,7 @@ button{
 
     padding:8px 18px;
 
-    font-size:15px;
+    font-size:clamp(12px, 3.5vw, 15px);
 
     cursor:pointer;
 
@@ -290,14 +316,17 @@ button:hover{
 
     min-height:18px;
 
-    font-size:16px;
+    font-size:clamp(13px, 3.5vw, 16px);
 
     font-weight:bold;
 
     color:gold;
 
-}
+    text-align:center;
 
+    padding:0 10px;
+
+}
 
 
 /* =========================
@@ -314,15 +343,13 @@ button:hover{
 
     border-top:4px solid rgb(85,0,170);
 
-    padding:14px 20px;
+    padding:14px 10px;
 
     text-align:center;
 
     color:#f0f0f0;
 
     width:100%;
-
-    box-sizing:border-box;
 
 }
 
@@ -331,21 +358,22 @@ button:hover{
 
     margin:0 0 8px 0;
 
-    font-size:17px;
+    font-size:clamp(14px, 4vw, 17px);
 
     color:rgb(186,140,255);
 
 }
 
 
-
 #connectionGuess{
 
-    width:200px;
+    width:90%;
 
-    height:30px;
+    max-width:220px;
 
-    font-size:16px;
+    height:34px;
+
+    font-size:15px;
 
     text-align:center;
 
@@ -355,6 +383,8 @@ button:hover{
 
     color:white;
 
+    border-radius:4px;
+
 }
 
 
@@ -362,9 +392,9 @@ button:hover{
 
     margin-top:8px;
 
-    font-size:16px;
+    font-size:clamp(13px, 3.5vw, 16px);
 
-    letter-spacing:4px;
+    letter-spacing:3px;
 
     font-weight:bold;
 
@@ -372,8 +402,11 @@ button:hover{
 
     min-height:20px;
 
-}
+    word-break:break-word;
 
+    padding:0 10px;
+
+}
 
 
 /* =========================
@@ -400,8 +433,6 @@ button:hover{
 
 }
 
-
-
 @keyframes connectionGreen{
 
     0%{ background:#1a1a1a; border-color:lime; }
@@ -412,38 +443,14 @@ button:hover{
 
 
 /* =========================
-   Game Area Layout
-========================= */
-
-#gameArea{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:0;
-
-}
-
-
-#questionBox{
-
-    width:100%;
-
-    border-top:4px solid rgb(85,0,170);
-
-}
-
-
-/* =========================
-   Letter Boxes
+   Letter Boxes (fluid sizing, no breakpoint jump)
 ========================= */
 
 .letterBox{
 
-    width:28px;
+    width:clamp(20px, 7.5vw, 32px);
 
-    height:28px;
+    height:clamp(20px, 7.5vw, 32px);
 
     margin:1px;
 
@@ -453,7 +460,7 @@ button:hover{
 
     text-align:center;
 
-    font-size:17px;
+    font-size:clamp(12px, 4vw, 18px);
 
     font-weight:bold;
 
@@ -462,6 +469,10 @@ button:hover{
     color:white;
 
     outline:none;
+
+    padding:0;
+
+    caret-color:transparent;
 
 }
 
@@ -473,7 +484,7 @@ button:hover{
 
 
 /* =========================
-   Keyboard
+   Keyboard (flex-based, always fits width)
 ========================= */
 
 #keyboard{
@@ -482,15 +493,17 @@ button:hover{
 
     flex-direction:column;
 
-    align-items:center;
+    align-items:stretch;
 
     gap:6px;
 
-    padding:14px;
+    padding:10px;
 
     background:black;
 
     border-top:4px solid rgb(85,0,170);
+
+    width:100%;
 
 }
 
@@ -498,15 +511,21 @@ button:hover{
 
     display:flex;
 
-    gap:5px;
+    justify-content:center;
+
+    gap:clamp(3px, 1vw, 5px);
+
+    width:100%;
 
 }
 
 .key{
 
-    min-width:68px;
+    flex:1 1 0;
 
-    height:48px;
+    max-width:52px;
+
+    height:clamp(36px, 9vw, 48px);
 
     background:#666;
 
@@ -516,7 +535,7 @@ button:hover{
 
     border-radius:4px;
 
-    font-size:15px;
+    font-size:clamp(11px, 3vw, 15px);
 
     font-weight:bold;
 
@@ -529,6 +548,8 @@ button:hover{
     align-items:center;
 
     justify-content:center;
+
+    padding:0;
 
 }
 
@@ -546,9 +567,9 @@ button:hover{
 
 .keyWide{
 
-    min-width:96px;
+    flex:1.8 1 0;
 
-    font-size:13px;
+    max-width:80px;
 
 }
 
@@ -578,7 +599,7 @@ button:hover{
 
 
 /* =========================
-   Message Box (bordered strip, not solid white)
+   Message Box
 ========================= */
 
 #messageBox{
@@ -591,11 +612,11 @@ button:hover{
 
     border-bottom:4px solid rgb(85,0,170);
 
-    padding:8px 20px;
+    padding:8px 12px;
 
     text-align:center;
 
-    font-size:13px;
+    font-size:clamp(11px, 3vw, 13px);
 
     font-weight:bold;
 
@@ -614,9 +635,9 @@ button:hover{
 
     border-radius:10px;
 
-    padding:12px 16px;
+    padding:12px;
 
-    margin:14px;
+    margin:12px;
 
     color:white;
 
@@ -626,9 +647,9 @@ button:hover{
 
     flex-wrap:wrap;
 
-    gap:14px;
+    gap:12px;
 
-    font-size:13px;
+    font-size:clamp(11px, 3vw, 13px);
 
 }
 
@@ -642,7 +663,7 @@ button:hover{
 
 
 /* =========================
-   History (horizontal strip)
+   History (horizontal scroll strip)
 ========================= */
 
 #historyBox{
@@ -651,7 +672,7 @@ button:hover{
 
     color:#f0f0f0;
 
-    padding:14px 16px;
+    padding:14px 12px;
 
     border-top:4px solid rgb(85,0,170);
 
@@ -661,9 +682,11 @@ button:hover{
 
     margin:0 0 8px 0;
 
-    font-size:16px;
+    font-size:clamp(14px, 4vw, 16px);
 
     color:rgb(186,140,255);
+
+    text-align:center;
 
 }
 
@@ -677,6 +700,8 @@ button:hover{
 
     padding-bottom:6px;
 
+    -webkit-overflow-scrolling:touch;
+
 }
 
 .historyEntry{
@@ -689,7 +714,7 @@ button:hover{
 
     padding:10px 12px;
 
-    flex:0 0 220px;
+    flex:0 0 min(220px, 80vw);
 
     box-sizing:border-box;
 
@@ -766,75 +791,3 @@ button:hover{
 
 .expertDifficulty{ border-left:8px solid rgb(186,140,255); }
 .expertDifficulty .difficultyLabel{ background:rgb(133,58,220); }
-
-
-/* =========================
-   Mobile Support
-========================= */
-
-@media(max-width:960px){
-
-    body{
-
-        padding-top:0;
-        overflow-x:hidden;
-
-    }
-
-    #gameContainer{
-
-        width:100vw;
-        border-width:4px;
-
-    }
-
-    .question{
-
-        font-size:16px;
-
-    }
-
-    .letterBox{
-
-        width:22px;
-        height:22px;
-        font-size:14px;
-
-    }
-
-    .key{
-
-        min-width:30px;
-        height:38px;
-        font-size:12px;
-
-    }
-
-    .keyWide{
-
-        min-width:56px;
-        font-size:11px;
-
-    }
-
-    #keyboard{
-
-        padding:8px;
-
-    }
-
-    .historyEntry{
-
-        flex:0 0 180px;
-
-    }
-
-}
-
-
-/* Hide the text cursor on letter boxes so it feels like a game tile, not a text field */
-.letterBox, #connectionGuess{
-
-    caret-color:transparent;
-
-}

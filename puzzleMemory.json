@@ -24,7 +24,12 @@
     "astronomy",
     "geology",
     "baking",
-    "mystery"
+    "mystery",
+    "equestrian",
+    "physics",
+    "oceanography",
+    "geomorphology",
+    "physiology"
   ],
   "sentences": [
     "The {cello} played a soft {flute} while the {harp} waited for the {drum} to begin.",
@@ -51,6 +56,11 @@
     "During the {eclipse} the {shadow} obscured the {corona} as the {alignment} shifted.",
     "The {crust} sits below the {mantle} which supports the {plate} moving above the {core}.",
     "Use the {flour} and the {yeast} plus the {water} to prepare the {dough}.",
-    "The {riddle} requires a {clue} to find the {answer} hidden in the {cipher}."
+    "The {riddle} requires a {clue} to find the {answer} hidden in the {cipher}.",
+    "The {saddle} rests on the {stirrup} near the {bridle} while the {reins} wait for the rider.",
+    "We used a {prism} to study the {refraction} of the {photon} through the {vacuum}.",
+    "The {trench} lies beneath the {seamount} where the {crust} meets the {abyss}.",
+    "The {canyon} formed when the {sediment} shifted as the {plateau} eroded into the {valley}.",
+    "The {athlete} focuses on the {reflex} during the {sprint} to improve their {stamina}."
   ]
 }
