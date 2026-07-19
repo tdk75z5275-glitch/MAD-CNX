@@ -766,3 +766,75 @@ button:hover{
 
 .expertDifficulty{ border-left:8px solid rgb(186,140,255); }
 .expertDifficulty .difficultyLabel{ background:rgb(133,58,220); }
+
+
+/* =========================
+   Mobile Support
+========================= */
+
+@media(max-width:960px){
+
+    body{
+
+        padding-top:0;
+        overflow-x:hidden;
+
+    }
+
+    #gameContainer{
+
+        width:100vw;
+        border-width:4px;
+
+    }
+
+    .question{
+
+        font-size:16px;
+
+    }
+
+    .letterBox{
+
+        width:22px;
+        height:22px;
+        font-size:14px;
+
+    }
+
+    .key{
+
+        min-width:30px;
+        height:38px;
+        font-size:12px;
+
+    }
+
+    .keyWide{
+
+        min-width:56px;
+        font-size:11px;
+
+    }
+
+    #keyboard{
+
+        padding:8px;
+
+    }
+
+    .historyEntry{
+
+        flex:0 0 180px;
+
+    }
+
+}
+
+
+/* Hide the text cursor on letter boxes so it feels like a game tile, not a text field */
+.letterBox, #connectionGuess{
+
+    caret-color:transparent;
+
+}

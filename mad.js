@@ -103,76 +103,37 @@ window.onload = async function () {
 
 async function loadPuzzlesFromAI(){
 
-    let attempts = 0;
+    try {
 
-    while(attempts < 3){
+        let response = await fetch("/generate-puzzles?count=5");
+        let data = await response.json();
 
-        try{
+        if(Array.isArray(data) && data.length > 0){
 
-            const response = await fetch(
-                "https://mad-cnx-server.onrender.com/generate-puzzles?count=5&new=true",
-                {
-                    cache:"no-store"
-                }
-            );
+            puzzles = data;
 
+        } else {
 
-            if(!response.ok){
-
-                throw new Error(
-                    "AI server error: " + response.status
-                );
-
-            }
-
-
-            let data = await response.json();
-
-
-            if(Array.isArray(data) && data.length > 0){
-
-                puzzles = data;
-
-                console.log(
-                    "AI puzzles loaded:",
-                    puzzles
-                );
-
-                return;
-
-            } 
-            else {
-
-                throw new Error(
-                    "Invalid puzzle data"
-                );
-
-            }
-
-
-        } catch(error){
-
-            attempts++;
-
-            console.log(
-                "AI attempt failed:",
-                attempts,
-                error
-            );
-
-
-            await new Promise(resolve =>
-                setTimeout(resolve,5000)
-            );
+            throw new Error("Invalid puzzle data");
 
         }
 
+    } catch (error) {
+
+        console.error("Falling back to default puzzles:", error);
+
+        puzzles = [
+            {
+                sentence: "I can {hear} you with my {ear}.",
+                connection: "hearing"
+            },
+            {
+                sentence: "The {cat} chased the {mouse}.",
+                connection: "animals"
+            }
+        ];
+
     }
-
-
-    console.log(
-        "Using fallback puzzles"
-    );
 
 }
 async function loadMorePuzzles(){
@@ -185,9 +146,8 @@ async function loadMorePuzzles(){
 
     try{
 
-        let response = await fetch(
-            "https://mad-cnx-server.onrender.com/generate-puzzles?count=5"
-        );
+        let response = await fetch("/generate-puzzles?count=5");
+
         let newPuzzles = await response.json();
 
 
@@ -233,6 +193,11 @@ function loadPuzzle(){
                         maxlength="1"
                         class="letterBox"
                         data-first="${isFirst}"
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        inputmode="none"
                         id="word${answers.length-1}_letter${i}">`;
 
         }
@@ -1391,37 +1356,45 @@ function getDifficultyClass(difficulty){
 
 function saveGameState(){
 
-    let boxStates = [];
+    try{
 
-    document.querySelectorAll(".letterBox").forEach(function(box){
+        let boxStates = [];
 
-        boxStates.push({
-            id: box.id,
-            value: box.value,
-            status: box.dataset.status || "",
-            disabled: box.disabled
+        document.querySelectorAll(".letterBox").forEach(function(box){
+
+            boxStates.push({
+                id: box.id,
+                value: box.value,
+                status: box.dataset.status || "",
+                disabled: box.disabled
+            });
+
         });
 
-    });
+        let state = {
+            puzzles: puzzles,
+            currentPuzzle: currentPuzzle,
+            currentGuesses: currentGuesses,
+            streak: streak,
+            bestStreak: bestStreak,
+            totalSolved: totalSolved,
+            hintsUsedCurrent: hintsUsedCurrent,
+            hintsUsedTotal: hintsUsedTotal,
+            connHintsUsed: connHintsUsed,
+            connHintsUsedTotal: connHintsUsedTotal,
+            boxStates: boxStates,
+            connectionBoxVisible:
+                document.getElementById("connectionBox").style.display === "block",
+            historyHTML: document.getElementById("historyList").innerHTML
+        };
 
-    let state = {
-        puzzles: puzzles,
-        currentPuzzle: currentPuzzle,
-        currentGuesses: currentGuesses,
-        streak: streak,
-        bestStreak: bestStreak,
-        totalSolved: totalSolved,
-        hintsUsedCurrent: hintsUsedCurrent,
-        hintsUsedTotal: hintsUsedTotal,
-        connHintsUsed: connHintsUsed,
-        connHintsUsedTotal: connHintsUsedTotal,
-        boxStates: boxStates,
-        connectionBoxVisible:
-            document.getElementById("connectionBox").style.display === "block",
-        historyHTML: document.getElementById("historyList").innerHTML
-    };
+        localStorage.setItem("madConexState", JSON.stringify(state));
 
-    localStorage.setItem("madConexState", JSON.stringify(state));
+    }catch(error){
+
+        console.error("Failed to save game state:", error);
+
+    }
 
 }
 
